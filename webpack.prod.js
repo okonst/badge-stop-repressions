@@ -5,7 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     "bundle": "./src/index.js",
-    "stop-repressions": "./src/stop-repressions.js",
+    "stop-repressions-banner": "./src/stop-repressions-banner.js",
+    "stop-repressions-badge": "./src/stop-repressions-badge.js",
     //"index": "./public/index.html",
   },
   mode: "production",
