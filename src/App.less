@@ -37,7 +37,6 @@
 				//height: 100%;
 			}
 			.demo{
-				//min-height: 444px;
 				position: relative;
 				padding: 0;
 				margin-left: auto;
@@ -53,31 +52,34 @@
 					bottom: 0;
 					padding: 3.5%;
 					padding-bottom: 25%;
-					//height: 73.5%;
 				}
 				.demo_header{
-					//margin-top: -16px;
-					//margin-left: -16px;
-					//margin-right: -16px;
 					width: auto;
+					.header_title{flex-grow: 1;}
+					svg{margin-right: 16px;}
 				}
 				.paper{
 					height: 100%;
 					position: relative;
 					padding: 0;
-					//background: url('../public/image/laptop-mockup.png') no-repeat;
-					//background-size: cover;
+					transition: background-color 0.3s;
 					&.light{
-						background-color: #c2c2c2;
+						background-color: #a2a2a2;
+						.banner{
+							background-color: #ffffff;
+						}
 					}
 					&.dark{
 						background-color: #ffffff;
+						.banner{
+							background-color: #4a4a4a;
+						}
 					}
-					
 				}
 				.badge{
 					position: absolute;
 					text-decoration: line-through solid white;
+					transition: top 0.3s, bottom 0.3s;
 					button{
 						min-width: 32px;
 					}
@@ -98,22 +100,18 @@
 					}
 				}
 				.banner{
-					width: 65%;
-					
 					margin-top: 150px;
-					background-color: #2c2c2c;
 					vertical-align: middle;
 					display: flex;
 					flex-direction: row;
-					justify-content: flex-start;
+					justify-content: center;
 					align-items: center;
+					margin-left: 16px;
+					margin-right: 16px;
+					transition: background-color 0.05s;
 					h6{
 						line-height: 20px;
 						color: #ffffff;
-						
-						span{
-							
-						}
 					}
 					img{
 						vertical-align: bottom;
@@ -121,25 +119,37 @@
 					// горизонтальный узкий баннер
 					&.narrow{
 						padding: 8px;
-						padding-right: 10%;
-						clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0 100%);
-						img{margin-right: 10px;}
+						img.banner_logo{
+							margin-right: 10px;
+							width: 60px;
+						}
+						img.banner_txt{
+							width: 280px;
+						}
 					}
 					// горизонтальный широкий баннер
 					&.wide{
 						padding: 16px;
-						padding-right: 10%;
-						clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0 100%);
-						img{margin-right: 10px;}
+						img.banner_logo{
+							margin-right: 10px;
+							width: 100px;
+						}
 					}
 					// вертикальный баннер
 					&.vertical{
 						width: fit-content;
-						padding: 8px;
-						padding-bottom: 10%;
+						padding: 16px;
+						//padding-bottom: 10%;
 						flex-direction: column;
-						clip-path: polygon(0 0, 0 100%, 50% 90%, 100% 100%, 100% 0);
-						img{margin-bottom: 10px;}
+						//clip-path: polygon(0 0, 0 100%, 50% 90%, 100% 100%, 100% 0);
+						margin-top: 100px;
+						img.banner_logo{
+							margin-bottom: 10px;
+							width: 100px;
+						}
+						img.banner_txt{
+							width: 150px;
+						}
 					}
 				}
 			}

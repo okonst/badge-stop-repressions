@@ -19,21 +19,29 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-// images
+// image badge
 import logoDark from "../../public/image/logo_dark.png";
 import badgeLargeLight from "../../public/image/badge/large-light.png";
 import badgeLargeDark from "../../public/image/badge/large-dark.png";
 import badgeSmallLight from "../../public/image/badge/small-light.png";
 import badgeSmallDark from "../../public/image/badge/small-dark.png";
-//import badgeDark from "../../public/image/badge/dark.svg";
-
+// image ribbon
 import ribbonLeftLight from "../../public/image/ribbon/left-light.png";
 import ribbonLeftDark from "../../public/image/ribbon/left-dark.png";
 import ribbonRightLight from "../../public/image/ribbon/right-light.png";
 import ribbonRightDark from "../../public/image/ribbon/right-dark.png";
+// image banner
+import bannerLogoSmallLight from "../../public/image/banner/logo-small-light.png";
+import bannerLogoSmallDark from "../../public/image/banner/logo-small-dark.png";
+import bannerLogoLargeLight from "../../public/image/banner/logo-large-light.png";
+import bannerLogoLargeDark from "../../public/image/banner/logo-Large-dark.png";
+import bannerTextSmallLight from "../../public/image/banner/text-small-light.png";
+import bannerTextSmallDark from "../../public/image/banner/text-small-dark.png";
+import bannerTextLargeLight from "../../public/image/banner/text-large-light.png";
+import bannerTextLargeDark from "../../public/image/banner/text-Large-dark.png";
 
 import laptop from "../../public/image/laptop-mockup.png";
-
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 
 class BadgeForm extends Component{
@@ -74,19 +82,25 @@ class BadgeForm extends Component{
     position[this.state.positionX] = 0;
     if(this.state.positionX == 'left' || this.state.positionX == 'right'){
       if(this.state.positionY == 'top') position.top = 80;
-      if(this.state.positionY == 'bottom') position.bottom = 28;
+      if(this.state.positionY == 'bottom') position.bottom = 25;
       if(this.state.positionY == 'middle'){
         position.top = this.state.type == "ribbon" ? '41%' : '48%' ;
-      } 
+      }
     }
+    if(this.state.type == "badge") position[this.state.positionX] = 10;
+
     // картинки для бейджа/значка
-    let ribbon, badge;
+    let ribbon, badge, bannerLogo, bannerTxt;
     if(this.state.colorStyle == 'light'){
       ribbon = this.state.positionX == 'left' ? ribbonLeftLight : ribbonRightLight;
       badge = this.state.sizeBadge == 'large' ? badgeLargeLight : badgeSmallLight;
+      bannerLogo = bannerLogoLargeLight;
+      bannerTxt = this.state.sizeBanner == 'vertical' ? bannerTextLargeLight : bannerTextSmallLight;
     }else{
       ribbon = this.state.positionX == 'left' ? ribbonLeftDark : ribbonRightDark;
         badge = this.state.sizeBadge == 'large' ? badgeLargeDark : badgeSmallDark;
+        bannerLogo = bannerLogoLargeDark;
+        bannerTxt = this.state.sizeBanner == 'vertical' ? bannerTextLargeDark : bannerTextSmallDark;
     }
 
     return(
@@ -99,9 +113,13 @@ class BadgeForm extends Component{
                   {/* Ваш сайт */}
                   <AppBar position="static" color="primary" elevation={0} className="demo_header">
                     <Toolbar>
+                      <SvgIcon>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                      </SvgIcon>
                       <Typography variant="h6" className="header_title">
                         Ваш сайт
                       </Typography>
+                      <Button color="inherit">Вход</Button>
                     </Toolbar>
                   </AppBar>
 
@@ -117,9 +135,9 @@ class BadgeForm extends Component{
                   {/* Баннер */}
                   {this.state.type == "banner" &&
                   <div className={"banner " + this.state.sizeBanner} style={{...position}}>
-                    <img src={logoDark} />
+                    <img src={bannerLogo} className="banner_logo"/>
                     <Typography variant="h6">
-                       Мы против<br/>репрессий
+                       <img src={bannerTxt} className="banner_txt"/>
                     </Typography>
                   </div>  }
 
