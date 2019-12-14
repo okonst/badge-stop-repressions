@@ -1,5 +1,6 @@
 {
   "name": "badge-stop-repressions",
+  "homepage": "https://okonst.github.io/badge-stop-repressions/",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +8,9 @@
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production --config webpack.prod.js",
     "analyse": "webpack --profile --json > stats.json",
-    "test": "test --env=jsdom"
+    "test": "test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -22,6 +25,10 @@
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.1",
+    "file-loader": "^5.0.2",
+    "gh-pages": "^2.1.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "style-loader": "^1.0.1",
