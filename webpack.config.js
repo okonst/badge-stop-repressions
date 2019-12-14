@@ -4,7 +4,8 @@ const webpack = require("webpack");
 module.exports = {
   entry: {
     "bundle": "./src/index.js",
-    "stop-repressions": "./src/stop-repressions.js",
+    "stop-repressions-banner": "./src/stop-repressions-banner.js",
+    "stop-repressions-badge": "./src/stop-repressions-badge.js",
   },
   mode: "development",
   module: {
