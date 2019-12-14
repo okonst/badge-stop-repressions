@@ -1,3 +1,6 @@
+/**
+* Форма конструктора бейджей/баннеров
+*/
 import React, { Component} from "react";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -18,12 +21,19 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 // images
 import logoDark from "../../public/image/logo_dark.png";
-import badgeDark from "../../public/image/badge/dark.svg";
-import badgeLight from "../../public/image/badge/light.svg";
-import ribbonLeftLight from "../../public/image/ribbon/left-light.svg";
-import ribbonLeftDark from "../../public/image/ribbon/left-dark.svg";
-import ribbonRightLight from "../../public/image/ribbon/right-light.svg";
-import ribbonRightDark from "../../public/image/ribbon/right-dark.svg";
+import badgeLargeLight from "../../public/image/badge/large-light.png";
+import badgeLargeDark from "../../public/image/badge/large-dark.png";
+import badgeSmallLight from "../../public/image/badge/small-light.png";
+import badgeSmallDark from "../../public/image/badge/small-dark.png";
+//import badgeDark from "../../public/image/badge/dark.svg";
+
+import ribbonLeftLight from "../../public/image/ribbon/left-light.png";
+import ribbonLeftDark from "../../public/image/ribbon/left-dark.png";
+import ribbonRightLight from "../../public/image/ribbon/right-light.png";
+import ribbonRightDark from "../../public/image/ribbon/right-dark.png";
+
+import laptop from "../../public/image/laptop-mockup.png";
+
 
 
 class BadgeForm extends Component{
@@ -64,121 +74,146 @@ class BadgeForm extends Component{
     position[this.state.positionX] = 0;
     if(this.state.positionX == 'left' || this.state.positionX == 'right'){
       if(this.state.positionY == 'top') position.top = 80;
-      if(this.state.positionY == 'bottom') position.bottom = 48;
-      if(this.state.positionY == 'middle') position.top = "40%";
+      if(this.state.positionY == 'bottom') position.bottom = 28;
+      if(this.state.positionY == 'middle'){
+        position.top = this.state.type == "ribbon" ? '41%' : '48%' ;
+      } 
     }
     // картинки для бейджа/значка
     let ribbon, badge;
     if(this.state.colorStyle == 'light'){
       ribbon = this.state.positionX == 'left' ? ribbonLeftLight : ribbonRightLight;
-      badge = badgeLight;
+      badge = this.state.sizeBadge == 'large' ? badgeLargeLight : badgeSmallLight;
     }else{
       ribbon = this.state.positionX == 'left' ? ribbonLeftDark : ribbonRightDark;
-        badge = badgeDark;
+        badge = this.state.sizeBadge == 'large' ? badgeLargeDark : badgeSmallDark;
     }
 
     return(
-          <Grid container spacing={3} className="badge_form">
-            {/* Левая часть - демо */}
-            <Grid item xs={6} className="demo">
-              <Paper className={"paper " + (this.state.colorStyle == "light" ? "light" : "dark")}>
-                {/* Ваш сайт */}
-                <AppBar position="static" color="primary" elevation={0} className="demo_header">
-                  <Toolbar>
-                    <Typography variant="h6" className="header_title">
-                      Ваш сайт
+          <Grid container className="badge_form">
+            {/* Верхняя часть - демо */}
+            <Grid item xs={12} sm={10} className="demo">
+              <img src={laptop} className="demo_laptop" />
+              <div className="demo_wrap">
+                <div className={"paper " + (this.state.colorStyle == "light" ? "light" : "dark")}>
+                  {/* Ваш сайт */}
+                  <AppBar position="static" color="primary" elevation={0} className="demo_header">
+                    <Toolbar>
+                      <Typography variant="h6" className="header_title">
+                        Ваш сайт
+                      </Typography>
+                    </Toolbar>
+                  </AppBar>
+
+                  {/* Бейдж или лента */}
+                  {(this.state.type == "badge" || this.state.type == "ribbon") &&
+                  <div className={"badge " + this.state.positionX} style={{...position}}>
+                    {this.state.type == "badge" &&
+                      <img src={badge} /> }
+                    {this.state.type == "ribbon" &&
+                      <img src={ribbon} /> }
+                  </div>  }
+
+                  {/* Баннер */}
+                  {this.state.type == "banner" &&
+                  <div className={"banner " + this.state.sizeBanner} style={{...position}}>
+                    <img src={logoDark} />
+                    <Typography variant="h6">
+                       Мы против<br/>репрессий
                     </Typography>
-                  </Toolbar>
-                </AppBar>
+                  </div>  }
 
-                {/* Бейдж или лента */}
-                {(this.state.type == "badge" || this.state.type == "ribbon") &&
-                <div className={"badge " + this.state.positionX} style={{...position}}>
-                  {this.state.type == "badge" &&
-                    <img src={badge} /> }
-                  {this.state.type == "ribbon" &&
-                    <img src={ribbon} /> }
-                </div>  }
-
-                {/* Баннер */}
-                {this.state.type == "banner" &&
-                <div className={"banner " + this.state.sizeBanner} style={{...position}}>
-                  <img src={logoDark} />
-                  <Typography variant="h6">
-                     Мы против<br/>репрессий
-                  </Typography>
-                </div>  }
-
-
-              </Paper>
+                </div>
+              </div>
             </Grid>
 
-            {/* Правая_часть - форма */}
-            <Grid item xs={6}>
+            {/* Нижняя часть - форма */}
+            <Grid item xs={12}>
               <Paper className="paper">
                 <form>
+                  <Grid container className="badge_form">
+                    {/* Левая колонка */}
+                    <Grid item xs={12} sm={6} className="field">
+                      {/* Вид значок/лента/баннер */}
+                      <FormControl component="fieldset" className="" fullWidth margin="normal">
+                        <FormLabel component="legend">Вид</FormLabel>
+                        <RadioGroup aria-label="type" name="type" value={this.state.type} onChange={this.onChange} row>
+                          <FormControlLabel value="badge" control={<Radio color="primary" />} label="Значок" />
+                          <FormControlLabel value="ribbon" control={<Radio color="primary" />} label="Лента" />
+                          <FormControlLabel value="banner" control={<Radio color="primary" />} label="Баннер" />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
 
-                  {/* Вид значок/лента/баннер */}
-                  <FormControl component="fieldset" className="" fullWidth margin="normal">
-                    <FormLabel component="legend">Вид</FormLabel>
-                    <RadioGroup aria-label="type" name="type" value={this.state.type} onChange={this.onChange} row>
-                      <FormControlLabel value="badge" control={<Radio color="primary" />} label="Значок" />
-                      <FormControlLabel value="ribbon" control={<Radio color="primary" />} label="Лента" />
-                      <FormControlLabel value="banner" control={<Radio color="primary" />} label="Баннер" />
-                    </RadioGroup>
-                  </FormControl>
+                    <Grid item xs={12} sm={6} className="field">
+                      {/* Цвет */}
+                      <FormControl component="fieldset" className="" fullWidth margin="normal">
+                        <FormLabel component="legend">Цвет</FormLabel>
+                        <RadioGroup aria-label="colorStyle" name="colorStyle" value={this.state.colorStyle} onChange={this.onChange} row>
+                          <FormControlLabel value="light" control={<Radio color="primary" />} label="Светлый" />
+                          <FormControlLabel value="dark" control={<Radio color="primary" />} label="Темный" />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+
+                    
+                    {/* Расположение слева/справа */}
+                    {(this.state.type == 'badge' || this.state.type == 'ribbon') &&
+                    <Grid item xs={12} sm={6} className="field">
+                      <FormControl component="fieldset" className="" fullWidth margin="normal">
+                        <FormLabel component="legend">Расположение на странице</FormLabel>
+                        <RadioGroup aria-label="positionX" name="positionX" value={this.state.positionX} onChange={this.onChange} row>
+                          <FormControlLabel value="left" control={<Radio color="primary" />} label="Слева" />
+                          <FormControlLabel value="right" control={<Radio color="primary" />} label="Справа" />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>  }
+                    
+
+                    
+                    {/* Размер баннера */}
+                    {this.state.type == "banner" &&
+                    <Grid item xs={12} sm={6} className="field">
+                      <FormControl component="fieldset" className="" fullWidth margin="normal">
+                        <FormLabel component="legend">Расположение баннера</FormLabel>
+                        <RadioGroup aria-label="sizeBanner" name="sizeBanner" value={this.state.sizeBanner} onChange={this.onChange} row>
+                          <FormControlLabel value="narrow" control={<Radio color="primary" />} label="Горизонтальный узкий" />
+                          <FormControlLabel value="wide" control={<Radio color="primary" />} label="Горизонтальный широкий" />
+                          <FormControlLabel value="vertical" control={<Radio color="primary" />} label="Вертикальный" />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>  }
+                    
+                    {/* Выравнивание по вертикали */}
+                    {(this.state.type == 'badge' || this.state.type == 'ribbon') &&
+                      <Grid item xs={12} sm={6} className="field">
+                      <FormControl component="fieldset" className="" fullWidth margin="normal">
+                        <FormLabel component="legend">Выравнивание по вертикали</FormLabel>
+                        <RadioGroup aria-label="positionY" name="positionY" value={this.state.positionY} onChange={this.onChange} row>
+                          <FormControlLabel value="top" control={<Radio color="primary" />} label="По верху" />
+                          <FormControlLabel value="middle" control={<Radio color="primary" />} label="По середине" />
+                          <FormControlLabel value="bottom" control={<Radio color="primary" />} label="По низу" />
+                        </RadioGroup>
+                      </FormControl>
+                     </Grid>  }
+
+                    
 
                   {/* Размер значка */}
                   {this.state.type == "badge" &&
-                  <FormControl component="fieldset" className="" fullWidth margin="normal">
-                    <FormLabel component="legend">Размер значка</FormLabel>
-                    <RadioGroup aria-label="sizeBadge" name="sizeBadge" value={this.state.sizeBadge} onChange={this.onChange} row>
-                      <FormControlLabel value="small" control={<Radio color="primary" />} label="Маленький" />
-                      <FormControlLabel value="large" control={<Radio color="primary" />} label="Большой" />
-                    </RadioGroup>
-                  </FormControl>  }
-
-                  {/* Размер баннера */}
-                  {this.state.type == "banner" &&
-                  <FormControl component="fieldset" className="" fullWidth margin="normal">
-                    <FormLabel component="legend">Расположение баннера</FormLabel>
-                    <RadioGroup aria-label="sizeBanner" name="sizeBanner" value={this.state.sizeBanner} onChange={this.onChange} row>
-                      <FormControlLabel value="narrow" control={<Radio color="primary" />} label="Горизонтальный узкий" />
-                      <FormControlLabel value="wide" control={<Radio color="primary" />} label="Горизонтальный широкий" />
-                      <FormControlLabel value="vertical" control={<Radio color="primary" />} label="Вертикальный" />
-                    </RadioGroup>
-                  </FormControl>  }
-
-                  {/* Цвет */}
-                  <FormControl component="fieldset" className="" fullWidth margin="normal">
-                    <FormLabel component="legend">Цвет</FormLabel>
-                    <RadioGroup aria-label="colorStyle" name="colorStyle" value={this.state.colorStyle} onChange={this.onChange} row>
-                      <FormControlLabel value="light" control={<Radio color="primary" />} label="Светлый" />
-                      <FormControlLabel value="dark" control={<Radio color="primary" />} label="Темный" />
-                    </RadioGroup>
-                  </FormControl>
-
-                  {/* Расположение слева/справа */}
-                  {(this.state.type == 'badge' || this.state.type == 'ribbon') &&
-                  <FormControl component="fieldset" className="" fullWidth margin="normal">
-                    <FormLabel component="legend">Расположение на странице</FormLabel>
-                    <RadioGroup aria-label="positionX" name="positionX" value={this.state.positionX} onChange={this.onChange} row>
-                      <FormControlLabel value="left" control={<Radio color="primary" />} label="Слева" />
-                      <FormControlLabel value="right" control={<Radio color="primary" />} label="Справа" />
-                    </RadioGroup>
-                  </FormControl>  }
-
-                  {/* Выравнивание по вертикали */}
-                  {(this.state.type == 'badge' || this.state.type == 'ribbon') &&
-                  <FormControl component="fieldset" className="" fullWidth margin="normal">
-                    <FormLabel component="legend">Выравнивание по вертикали</FormLabel>
-                    <RadioGroup aria-label="positionY" name="positionY" value={this.state.positionY} onChange={this.onChange} row>
-                      <FormControlLabel value="top" control={<Radio color="primary" />} label="По верху" />
-                      <FormControlLabel value="middle" control={<Radio color="primary" />} label="По середине" />
-                      <FormControlLabel value="bottom" control={<Radio color="primary" />} label="По низу" />
-                    </RadioGroup>
-                  </FormControl>  }
+                  <Grid item xs={12} sm={6} className="field">
+                    <FormControl component="fieldset" className="" fullWidth margin="normal">
+                      <FormLabel component="legend">Размер значка</FormLabel>
+                      <RadioGroup aria-label="sizeBadge" name="sizeBadge" value={this.state.sizeBadge} onChange={this.onChange} row>
+                        <FormControlLabel value="small" control={<Radio color="primary" />} label="Маленький" />
+                        <FormControlLabel value="large" control={<Radio color="primary" />} label="Большой" />
+                      </RadioGroup>
+                    </FormControl>
+                  </Grid>  }
                   
+
+                </Grid>
+
                   <div>
                     <FormControl component="div" className="" margin="normal">
                       <Button variant="contained" color="primary" onClick={this.generateCode}>

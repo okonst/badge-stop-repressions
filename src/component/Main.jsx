@@ -24,7 +24,7 @@ class Main extends Component{
             </Typography>
             
             <Typography variant="h5" align="center" color="textSecondary" component="p">
-              Выбери вариант размещения значка или баннера, и получи код для вставки на свой сайт. Это займет 2 минуты.
+              Выбери вариант размещения значка или баннера и получи код для вставки на свой сайт. Это займет 2 минуты.
             </Typography>
           </Container>
 
