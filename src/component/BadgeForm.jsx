@@ -87,7 +87,7 @@ class BadgeForm extends Component{
                 {this.state.type == "banner" &&
                 <div className={"banner"} style={{...position}}>
                   <Typography variant="h6">
-                     <img src='./image/logo_dark.png' />
+                     <img src='../image/logo_dark.png' />
                      <span>Мы против<br/>репрессий</span>
                   </Typography>
                 </div>  }

@@ -16,7 +16,7 @@ class Header extends Component{
       	<AppBar position="static" color="default" elevation={0} className="header">
           
           <Toolbar>
-            <img src='./image/logo_dark.png' width="35px"/>
+            <img src='../image/logo_dark.png' width="35px"/>
             <Typography variant="h6" className="header_title">
               Мы против политических репрессий
             </Typography>
