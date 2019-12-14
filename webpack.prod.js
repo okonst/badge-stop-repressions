@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -10,12 +9,6 @@ module.exports = {
     "stop-repressions-badge": "./src/stop-repressions-badge.js",
     //"index": "./public/index.html",
   },
-  plugins: [
-    new CopyWebpackPlugin([{
-        from: './public/image',
-        to: './image'
-    }]),
-  ],
   mode: "production",
   /*plugins: [
     new HtmlWebpackPlugin({
@@ -42,16 +35,16 @@ module.exports = {
             'less-loader'
         ],
       },
-      // {
-      //   test: /\.(png|svg|jpg|gif)$/,
-      //   use: {
-      //     loader: 'file-loader',
-      //     options: {
-      //       name: '[name].[ext]',
-      //       outputPath:'./image/',
-      //     }
-      //   },
-      // },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath:'./image/',
+          }
+        },
+      },
       /*{
         test: /\.(html)$/,
         use: {
