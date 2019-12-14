@@ -16,7 +16,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-
+// images
 import logoDark from "../../public/image/logo_dark.png";
 import badgeDark from "../../public/image/badge/dark.svg";
 import badgeLight from "../../public/image/badge/light.svg";
@@ -49,7 +49,8 @@ class BadgeForm extends Component{
       showCode: false,
 
       // ссылка
-      src: "https://site.ru/stop-repressions.js",
+      srcBadge: "https://okonst.github.io/badge-stop-repressions/stop-repressions-badge.js",
+      srcBanner: "https://okonst.github.io/badge-stop-repressions/stop-repressions-banner.js",
     }
     // bindings
     this.onChange = this.onChange.bind(this);
@@ -66,7 +67,7 @@ class BadgeForm extends Component{
       if(this.state.positionY == 'bottom') position.bottom = 48;
       if(this.state.positionY == 'middle') position.top = "40%";
     }
-
+    // картинки для бейджа/значка
     let ribbon, badge;
     if(this.state.colorStyle == 'light'){
       ribbon = this.state.positionX == 'left' ? ribbonLeftLight : ribbonRightLight;
@@ -97,18 +98,14 @@ class BadgeForm extends Component{
                     <img src={badge} /> }
                   {this.state.type == "ribbon" &&
                     <img src={ribbon} /> }
-
-                  {/*<Button variant="contained" color="secondary" onClick={this.showFull}>
-                        #37
-                      </Button>*/}
                 </div>  }
 
                 {/* Баннер */}
                 {this.state.type == "banner" &&
-                <div className={"banner"} style={{...position}}>
+                <div className={"banner " + this.state.sizeBanner} style={{...position}}>
+                  <img src={logoDark} />
                   <Typography variant="h6">
-                     <img src={logoDark} />
-                     <span>Мы против<br/>репрессий</span>
+                     Мы против<br/>репрессий
                   </Typography>
                 </div>  }
 
@@ -274,10 +271,17 @@ class BadgeForm extends Component{
   }
   // сгенерировать код
   generateCode(){
-    let code = "<script id='stop-repressions' src='"+this.state.src+"' data-type='"+this.state.type+"' data-color='"+this.state.colorStyle+"'";
+    let src = this.state.type == "banner" ? this.state.srcBanner : this.state.srcBadge;
+    let code = "<script id='stop-repressions' src='"+src+"' data-type='"+this.state.type+"' data-color='"+this.state.colorStyle+"'";
+    if(this.state.type == 'badge' || this.state.type == 'ribbon'){
+      code += " data-position-x='"+this.state.positionX+"'";
+      code += " data-position-y='"+this.state.positionY+"'";
+    }
     if(this.state.type == 'badge'){
-      code += " data-positionX='"+this.state.positionX+"'";
-      code += " data-positionY='"+this.state.positionY+"'";
+      code += " data-size-badge='"+this.state.sizeBadge+"'";
+    }
+    if(this.state.type == 'banner'){
+      code += " data-size-banner='"+this.state.sizeBanner+"'";
     }
     code += " defer></script>";
     this.setState({code: code, showCode: true});

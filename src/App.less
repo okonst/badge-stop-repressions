@@ -76,27 +76,47 @@
 				}
 				.banner{
 					width: 65%;
-					padding: 8px;
-					padding-right: 10%;
+					
 					margin-top: 150px;
 					background-color: #2c2c2c;
-					clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0 100%);
 					vertical-align: middle;
+					display: flex;
+					flex-direction: row;
+					justify-content: flex-start;
+					align-items: center;
 					h6{
-						height: 80px;
 						line-height: 20px;
 						color: #ffffff;
-						display: flex;
-						flex-direction: row;
-						justify-content: flex-start;
-						align-items: center;
+						
 						span{
 							
 						}
 					}
 					img{
 						vertical-align: bottom;
-						margin-right: 10px;
+					}
+					// горизонтальный узкий баннер
+					&.narrow{
+						padding: 8px;
+						padding-right: 10%;
+						clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0 100%);
+						img{margin-right: 10px;}
+					}
+					// горизонтальный широкий баннер
+					&.wide{
+						padding: 16px;
+						padding-right: 10%;
+						clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0 100%);
+						img{margin-right: 10px;}
+					}
+					// вертикальный баннер
+					&.vertical{
+						width: fit-content;
+						padding: 8px;
+						padding-bottom: 10%;
+						flex-direction: column;
+						clip-path: polygon(0 0, 0 100%, 50% 90%, 100% 100%, 100% 0);
+						img{margin-bottom: 10px;}
 					}
 				}
 			}
