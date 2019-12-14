@@ -17,7 +17,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 
-import logoDark from "../../public/image/logo_dark.png";
+// import logoDark from "../../public/image/logo_dark.png";
 
 
 class BadgeForm extends Component{
@@ -87,7 +87,7 @@ class BadgeForm extends Component{
                 {this.state.type == "banner" &&
                 <div className={"banner"} style={{...position}}>
                   <Typography variant="h6">
-                     <img src={logoDark} />
+                     <img src='../image/logo_dark.png' />
                      <span>Мы против<br/>репрессий</span>
                   </Typography>
                 </div>  }

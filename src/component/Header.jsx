@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
-import logoDark from "../../public/image/logo_dark.png";
+// import logoDark from "../../public/image/logo_dark.png";
 
 
 class Header extends Component{
@@ -16,7 +16,7 @@ class Header extends Component{
       	<AppBar position="static" color="default" elevation={0} className="header">
           
           <Toolbar>
-            <img src={logoDark} width="35px"/>
+            <img src='../image/logo_dark.png' width="35px"/>
             <Typography variant="h6" className="header_title">
               Мы против политических репрессий
             </Typography>
