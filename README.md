@@ -1,10 +1,16 @@
 ## Badge-Stop-Repression
 
-Сервис для добавления на любой сайт бейджа "Мы против политических репрессий".
+Сервис для добавления на любой сайт значка "Мы против политических репрессий".
+
+Демо: [https://okonst.github.io/badge-stop-repressions/](https://okonst.github.io/badge-stop-repressions/)
+
+Предлагаем всем желающим добавлять бейдж на свои сайты, блоги и т.п. Когда люди начнут видеть его на каждом 3-м сайте, то будут обращать внимание. Поможем донести до всех информацию о том, что большинство нормальных людей в России против политических репрессий.
+
+## Framework
+
+The project is based on React. It uses Material-UI components and styles.
 
 ## Folder Structure
-
-After creation, your project should look like this:
 
 ```
 my-app/
@@ -39,5 +45,4 @@ Builds the app for production to the `dist` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
