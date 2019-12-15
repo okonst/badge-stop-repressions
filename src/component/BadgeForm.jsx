@@ -98,10 +98,10 @@ class BadgeForm extends Component{
     let position = {};
     position[this.state.positionX] = 0;
     if(this.state.positionX == 'left' || this.state.positionX == 'right'){
-      if(this.state.positionY == 'top') position.top = 80;
-      if(this.state.positionY == 'bottom') position.bottom = 25;
+      if(this.state.positionY == 'top') position.top = 60;
+      if(this.state.positionY == 'bottom') position.bottom = 18;
       if(this.state.positionY == 'middle'){
-        position.top = this.state.type == "ribbon" ? '41%' : '48%' ;
+        position.top = this.state.type == "ribbon" ? '35%' : '48%' ;
       }
     }
     if(this.state.type == "badge") position[this.state.positionX] = 10;
@@ -127,18 +127,46 @@ class BadgeForm extends Component{
               <img src={laptop} className="demo_laptop" />
               <div className="demo_wrap">
                 <div className={"paper " + (this.state.colorStyle == "light" ? "light" : "dark")}>
-                  {/* Ваш сайт */}
-                  <AppBar position="static" color="primary" elevation={0} className="demo_header">
-                    <Toolbar>
-                      <SvgIcon>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                      </SvgIcon>
-                      <Typography variant="h6" className="header_title">
-                        Ваш сайт
-                      </Typography>
-                      <Button color="inherit">Вход</Button>
-                    </Toolbar>
-                  </AppBar>
+                  
+
+                  <Grid container spacing={1} className="demo_block_wrap">
+                    {/* Ваш сайт */}
+                    <AppBar position="static" color="primary" elevation={0} className="demo_header">
+                      <Toolbar variant={'dense'}>
+                        <SvgIcon>
+                          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                        </SvgIcon>
+                        <Typography variant="h6" className="header_title">
+                          Ваш сайт
+                        </Typography>
+                        <Button color="inherit">Вход</Button>
+                      </Toolbar>
+                    </AppBar>
+
+                    <Grid container spacing={1} className="demo_block_top">
+                      <Grid item xs={9} className="demo_block"><Box className="demo_box"></Box></Grid>
+                      <Grid item xs={3} className="demo_block"><Box className="demo_box">
+                        {/* Баннер вертикальный */}
+                        {(this.state.type == "banner" && this.state.sizeBanner == "vertical") &&
+                        <div className={"banner " + this.state.sizeBanner} style={{...position}}>
+                          <img src={bannerLogo} className="banner_logo"/>
+                          <Typography variant="h6">
+                             <img src={bannerTxt} className="banner_txt"/>
+                          </Typography>
+                        </div>  }
+                      </Box></Grid>
+                    </Grid>
+                    <Grid item xs={12} className="demo_block demo_block_bottom"><Box className="demo_box">
+                      {/* Баннер горизонтальный*/}
+                      {(this.state.type == "banner" && this.state.sizeBanner != "vertical") &&
+                      <div className={"banner " + this.state.sizeBanner} style={{...position}}>
+                        <img src={bannerLogo} className="banner_logo"/>
+                        <Typography variant="h6">
+                           <img src={bannerTxt} className="banner_txt"/>
+                        </Typography>
+                      </div>  }
+                    </Box></Grid>
+                  </Grid>
 
                   {/* Бейдж или лента */}
                   {(this.state.type == "badge" || this.state.type == "ribbon") &&
@@ -149,19 +177,13 @@ class BadgeForm extends Component{
                       <img src={ribbon} /> }
                   </div>  }
 
-                  {/* Баннер */}
-                  {this.state.type == "banner" &&
-                  <div className={"banner " + this.state.sizeBanner} style={{...position}}>
-                    <img src={bannerLogo} className="banner_logo"/>
-                    <Typography variant="h6">
-                       <img src={bannerTxt} className="banner_txt"/>
-                    </Typography>
-                  </div>  }
+                  
 
                 </div>
               </div>
             </Grid>
 
+            <Grid container spacing={3}>
             {/* Нижняя часть - форма */}
             <Grid item xs={12}>
               <Paper className="paper">
@@ -314,6 +336,7 @@ class BadgeForm extends Component{
 
               </Paper>
             </Grid>  }
+            </Grid>
 
 
           </Grid>

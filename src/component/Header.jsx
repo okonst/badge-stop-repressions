@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
 import logoDark from "../../public/image/logo_dark.png";
+import logoLight from "../../public/image/logo_light.png";
 
 
 class Header extends Component{
@@ -16,12 +17,12 @@ class Header extends Component{
       	<AppBar position="static" color="default" elevation={0} className="header">
           
           <Toolbar>
-            <img src={logoDark} width="50px"/>
+            <img src={logoLight} width="50px"/>
             <Typography variant="h6" className="header_title">
               Мы против политических репрессий
             </Typography>
 
-            <nav className="header_menu">
+            {/*<nav className="header_menu">
               <Link variant="button" color="textPrimary" href="#" className="link">
                 Features
               </Link>
@@ -31,7 +32,7 @@ class Header extends Component{
               <Link variant="button" color="textPrimary" href="#" className="">
                 Contact
               </Link>
-            </nav>
+            </nav>*/}
 
           </Toolbar>
   	    </AppBar>

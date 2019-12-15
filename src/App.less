@@ -6,30 +6,57 @@
 	
 	// Header
 	.header{
+		background-color: #1a237e;
 		img{
 			margin-right: 16px;
+			margin-top: 4px;
+			margin-bottom: 4px;
 		}
 		.header_title{
 			flex-grow: 1;
+			color: #ffffff;
+			line-height: 20px;
+			margin-top: 8px;
+			margin-bottom: 8px;
 		}
 		.header_menu{
 			a{
 				margin-left: 16px;
+				color: #ffffff;
 			}
 		}
 	}
 	*{
 		box-sizing: border-box;
 	}
+
 	// Основной раздел
 	.main{
 		flex: 1 0 auto;
 		margin-bottom: 48px;
+
 		// Верхний блок
 		.top_block{
 			margin-top: 48px;
 			margin-bottom: 48px;
+			
+			h1{
+				color: #21395e;
+				font-weight: bold;
+				text-transform: uppercase;
+				font-size: 2rem;
+				@media screen and (min-width: 479px) {
+				  font-size: 2.5rem;
+				}
+				@media screen and (min-width: 800px) {
+				  font-size: 3rem;
+				}
+			}
+			h3, p{
+				color: #4a4a4a;
+			}
 		}
+
 		// Форма
 		.badge_form{
 			.paper{
@@ -51,26 +78,70 @@
 					right: 0;
 					bottom: 0;
 					padding: 3.5%;
-					padding-bottom: 25%;
+					padding-bottom: 24.5%;
 				}
 				.demo_header{
 					width: auto;
+					margin:  -8px -4px 4px -4px;
 					.header_title{flex-grow: 1;}
 					svg{margin-right: 16px;}
+					flex: 1;
+					.MuiToolbar-dense{
+						min-height: unset;
+						svg, h6{
+							font-size: 12px;
+							line-height: 12px;
+							@media screen and (min-width: 479px) {
+							  font-size: 16px;
+							  line-height: 15px;
+							}
+						}
+						button{
+							font-size: 8px;
+							@media screen and (min-width: 479px) {
+							  font-size: 12px;
+							}
+						}
+					}
 				}
+				.demo_block_wrap{
+					height: 100%;
+					padding: 8px;
+					flex-direction: column;
+					.demo_block_top{
+						flex: 8;
+						padding: 4px;
+					}
+					.demo_block_bottom{
+						flex: 2;
+					}
+					.demo_block{
+						.demo_box{							
+							height: 100%;
+							transition: background-color 0.3s;
+						}
+					}
+				}
+				
 				.paper{
 					height: 100%;
 					position: relative;
 					padding: 0;
 					transition: background-color 0.3s;
 					&.light{
-						background-color: #a2a2a2;
+						background-color: #8b8b8b;//#a2a2a2;
+						.demo_box{
+							background-color: #4f4f4f;
+						}
 						.banner{
 							background-color: #ffffff;
 						}
 					}
 					&.dark{
 						background-color: #ffffff;
+						.demo_box{
+							background-color: #d8d8d8;
+						}
 						.banner{
 							background-color: #4a4a4a;
 						}
@@ -80,6 +151,10 @@
 					position: absolute;
 					text-decoration: line-through solid white;
 					transition: top 0.3s, bottom 0.3s;
+					max-width: 16%;
+					img{
+						width: 100%;
+					}
 					button{
 						min-width: 32px;
 					}
@@ -100,14 +175,15 @@
 					}
 				}
 				.banner{
-					margin-top: 150px;
+					//margin-top: 150px;
 					vertical-align: middle;
 					display: flex;
 					flex-direction: row;
 					justify-content: center;
 					align-items: center;
-					margin-left: 16px;
-					margin-right: 16px;
+					//margin-left: 16px;
+					//margin-right: 16px;
+					height: 100%;
 					transition: background-color 0.05s;
 					h6{
 						line-height: 20px;
@@ -118,37 +194,79 @@
 					}
 					// горизонтальный узкий баннер
 					&.narrow{
-						padding: 8px;
+						padding: 4px;
+						@media screen and (min-width: 500px) {
+						  padding: 8px;
+						}
 						img.banner_logo{
 							margin-right: 10px;
-							width: 60px;
+							width: 10%;
+							@media screen and (min-width: 500px) {
+							  width: 50px;
+							}
+							@media screen and (min-width: 800px) {
+							  width: 60px;
+							}
 						}
 						img.banner_txt{
-							width: 280px;
+							width: 60%;
+							@media screen and (min-width: 500px) {
+							  width: 220px;
+							}
+							@media screen and (min-width: 800px) {
+							  width: 280px;
+							}
 						}
 					}
 					// горизонтальный широкий баннер
 					&.wide{
-						padding: 16px;
+						padding: 8px;
+						@media screen and (min-width: 500px) {
+						  padding: 8px;
+						}
+						@media screen and (min-width: 800px) {
+						  padding: 16px;
+						}
 						img.banner_logo{
 							margin-right: 10px;
-							width: 100px;
+							width: 15%;
+							@media screen and (min-width: 500px) {
+							  width: 80px;
+							}
+							@media screen and (min-width: 800px) {
+							  width: 100px;
+							}
+						}
+						img.banner_txt{
+							width: 70%;
+							@media screen and (min-width: 500px) {
+							  width: 250px;
+							}
+							@media screen and (min-width: 800px) {
+							  width: 360px;
+							}
 						}
 					}
 					// вертикальный баннер
 					&.vertical{
-						width: fit-content;
-						padding: 16px;
-						//padding-bottom: 10%;
+						height: 100%;
 						flex-direction: column;
-						//clip-path: polygon(0 0, 0 100%, 50% 90%, 100% 100%, 100% 0);
-						margin-top: 100px;
+						padding: 4px;
+						@media screen and (min-width: 800px) {
+						  padding: 16px;
+						}
 						img.banner_logo{
-							margin-bottom: 10px;
-							width: 100px;
+							margin-bottom: 0px;
+							width: 80%;
+							@media screen and (min-width: 400px) {
+							  margin-bottom: 4px;
+							}
+							@media screen and (min-width: 800px) {
+							  margin-bottom: 10px;
+							}
 						}
 						img.banner_txt{
-							width: 150px;
+							width: 100%;
 						}
 					}
 				}
@@ -163,6 +281,7 @@
 					border: 1px solid rgba(0, 0, 0, 0.12);
 					border-radius: 6px;
 					padding: 16px;
+					word-break: break-word;
 				}
 				.code_buttons{
 					margin-top: 16px;

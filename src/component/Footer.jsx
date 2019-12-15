@@ -11,19 +11,20 @@ import Link from '@material-ui/core/Link';
 const footers = [
   {
     title: 'Московское дело',
-    description: ['Инфо'],
+    description: [{desc:'Сайт', link: 'https://mosdelo.org/'}],
   },
   {
     title: 'Новое величие',
-    description: ['Инфо'],
+    description: [{desc:'Инфо', link: 'https://ovdinfo.org/articles/2018/10/27/delo-novogo-velichiya-kto-eti-lyudi-i-za-chto-ih-sudyat-gid-ovd-info'}],
+
   },
   {
     title: 'Ростовское дело',
-    description: ['Инфо'],
+    description: [{desc: 'Сайт', link: 'http://rostovcase.ru/'}],
   },
   {
     title: 'Дело ФБК',
-    description: ['Инфо'],
+    description: [{desc: 'Сайт', link: 'https://delo.fbk.info/'}],
   },
 ];
 
@@ -41,8 +42,8 @@ class Footer extends Component{
               <ul>
                 {footer.description.map(item => (
                   <li key={item}>
-                    <Link href="#" variant="subtitle1" color="textSecondary">
-                      {item}
+                    <Link href={item.link} variant="subtitle1" color="textSecondary">
+                      {item.desc}
                     </Link>
                   </li>
                 ))}
