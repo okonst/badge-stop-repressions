@@ -1,7 +1,7 @@
 (function () {
     // Configuration
     //let domain = 'http://localhost:3000',
-    let domain = 'https://okonst.github.io/banner-stop-repressions',
+    let domain = 'https://okonst.github.io/badge-stop-repressions',
         bannerHeights = {
             narrow: 60,
             wide: 90,

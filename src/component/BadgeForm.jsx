@@ -13,7 +13,7 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
-
+// form
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -25,11 +25,19 @@ import badgeLargeLight from "../../public/image/badge/large-light.png";
 import badgeLargeDark from "../../public/image/badge/large-dark.png";
 import badgeSmallLight from "../../public/image/badge/small-light.png";
 import badgeSmallDark from "../../public/image/badge/small-dark.png";
+import badgeLargeLight2 from "../../public/image/badge/large-light@2x.png";
+import badgeLargeDark2 from "../../public/image/badge/large-dark@2x.png";
+import badgeSmallLight2 from "../../public/image/badge/small-light@2x.png";
+import badgeSmallDark2 from "../../public/image/badge/small-dark@2x.png";
 // image ribbon
 import ribbonLeftLight from "../../public/image/ribbon/left-light.png";
 import ribbonLeftDark from "../../public/image/ribbon/left-dark.png";
 import ribbonRightLight from "../../public/image/ribbon/right-light.png";
 import ribbonRightDark from "../../public/image/ribbon/right-dark.png";
+import ribbonLeftLight2 from "../../public/image/ribbon/left-light@2x.png";
+import ribbonLeftDark2 from "../../public/image/ribbon/left-dark@2x.png";
+import ribbonRightLight2 from "../../public/image/ribbon/right-light@2x.png";
+import ribbonRightDark2 from "../../public/image/ribbon/right-dark@2x.png";
 // image banner
 import bannerLogoSmallLight from "../../public/image/banner/logo-small-light.png";
 import bannerLogoSmallDark from "../../public/image/banner/logo-small-dark.png";
@@ -48,7 +56,7 @@ import vDark from "../../public/image/banner/v-dark.png";
 import vDark2 from "../../public/image/banner/v-dark@2x.png";
 import vLight from "../../public/image/banner/v-light.png";
 import vLight2 from "../../public/image/banner/v-light@2x.png";
-
+// image for demo
 import laptop from "../../public/image/laptop-mockup.png";
 import SvgIcon from '@material-ui/core/SvgIcon';
 
