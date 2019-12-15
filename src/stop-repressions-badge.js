@@ -67,7 +67,7 @@
                 right: 30px;
             }
             .stop-r__y--top {
-                top: 150px;
+                top: 100px;
             }
             .stop-r__y--top.stop-r__t--badge {
                 top: 30px;
@@ -76,7 +76,7 @@
                 top: 50%;
             }
             .stop-r__y--bottom {
-                bottom: 150px;
+                bottom: 100px;
             }
             .stop-r__y--bottom.stop-r__t--badge {
                 top: 30px;
@@ -87,6 +87,7 @@
             .stop-r__t--ribbon {
                 height: ${ribbonHeight}px;
                 width: ${ribbonWidth}px;
+                max-width: 20vw;
             }
             .stop-r__t--ribbon.stop-r__y--middle {
                 margin-top: -${ribbonHeight / 2}px;
