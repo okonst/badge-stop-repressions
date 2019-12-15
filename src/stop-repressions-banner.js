@@ -18,6 +18,7 @@
         h = d.head,
         b = d.body,
         s = d.getElementById('stop-repressions'),
+        div = d.getElementById('stop-repressions-banner'),
 
         banner = document.createElement('a'),
         classes = ['stop-rb'],
@@ -99,6 +100,7 @@
     let imgType = bannerS == 'vertical' ? 'v' : 'h';
     banner.innerHTML = `<img src="${domain}/image/banner/${imgType}-${bannerC}.png" srcset="${domain}/image/banner/${imgType}-${bannerC}.png 1x, ${domain}/image/banner/${imgType}-${bannerC}@2x.png 2x">`;
 
-    s.parentNode.replaceChild(banner, s);
+    div.parentNode.replaceChild(banner, div);
+    s.remove();
     h.append(styles);
 })();
