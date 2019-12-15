@@ -1,7 +1,7 @@
 (function () {
     // Configuration
-    let domain = 'http://localhost:3000',
-        // let domain = 'https://okonst.github.io/banner-stop-repressions',
+    //let domain = 'http://localhost:3000',
+    let domain = 'https://okonst.github.io/banner-stop-repressions',
         bannerHeights = {
             narrow: 60,
             wide: 90,
@@ -12,7 +12,7 @@
             wide: 442,
             vertical: 203
         },
-        link = '#';
+        link = 'http://www.mothers-for-freedom.ru/';
 
     let d = document,
         h = d.head,

@@ -39,6 +39,15 @@ import bannerTextSmallLight from "../../public/image/banner/text-small-light.png
 import bannerTextSmallDark from "../../public/image/banner/text-small-dark.png";
 import bannerTextLargeLight from "../../public/image/banner/text-large-light.png";
 import bannerTextLargeDark from "../../public/image/banner/text-Large-dark.png";
+// image banner for plugin
+import hDark from "../../public/image/banner/h-dark.png";
+import hDark2 from "../../public/image/banner/h-dark@2x.png";
+import hLight from "../../public/image/banner/h-light.png";
+import hLight2 from "../../public/image/banner/h-light@2x.png";
+import vDark from "../../public/image/banner/v-dark.png";
+import vDark2 from "../../public/image/banner/v-dark@2x.png";
+import vLight from "../../public/image/banner/v-light.png";
+import vLight2 from "../../public/image/banner/v-light@2x.png";
 
 import laptop from "../../public/image/laptop-mockup.png";
 import SvgIcon from '@material-ui/core/SvgIcon';

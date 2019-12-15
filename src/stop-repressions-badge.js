@@ -1,13 +1,13 @@
 (function () {
     // Configuration
-    let domain = 'http://localhost:3000',
-    // let domain = 'https://okonst.github.io/badge-stop-repressions',
+    //let domain = 'http://localhost:3000',
+    let domain = 'https://okonst.github.io/badge-stop-repressions',
         ribbonHeight    = 146,
         ribbonWidth     = 103,
         badgeHeight     = 35,
         badgeWidth      = 37,
         badgeWidthLarge = 112,
-        link = '#';
+        link = 'http://www.mothers-for-freedom.ru/';
 
     let d = document,
         h = d.head,
