@@ -315,7 +315,7 @@ class BadgeForm extends Component{
 
                 {/* script для вставки js */}
                 <Typography variant="body1" component="p" className="code_comment" color="textSecondary">
-                  Вставь этот код на свой сайт в любое место внутри тега &lt;header&gt;.
+                  Вставь этот код на свой сайт в любое место внутри тега &lt;head&gt;.
                 </Typography>
                 
                 <Typography variant="body1" component="code" className="code_js">
