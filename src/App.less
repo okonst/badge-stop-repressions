@@ -61,7 +61,6 @@
 		.badge_form{
 			.paper{
 				padding: 16px;
-				//height: 100%;
 			}
 			.demo{
 				position: relative;
@@ -85,9 +84,12 @@
 					margin:  -8px -4px 4px -4px;
 					.header_title{flex-grow: 1;}
 					svg{margin-right: 16px;}
-					flex: 1;
+					//flex: 1 0 0;
+					flex-grow: 1;
+					flex-shrink: 0;
+					flex-basis: 0;
 					.MuiToolbar-dense{
-						min-height: unset;
+						min-height: auto;
 						svg, h6{
 							font-size: 12px;
 							line-height: 12px;
@@ -109,11 +111,17 @@
 					padding: 8px;
 					flex-direction: column;
 					.demo_block_top{
-						flex: 8;
+						//flex: 8 0 0;
+						flex-grow: 8;
+						flex-shrink: 0;
+						flex-basis: 0;
 						padding: 4px;
 					}
 					.demo_block_bottom{
-						flex: 2;
+						//flex: 2 0 0;
+						flex-grow: 2;
+						flex-shrink: 0;
+						flex-basis: 0;
 					}
 					.demo_block{
 						.demo_box{							
@@ -147,11 +155,19 @@
 						}
 					}
 				}
+				// значки и ленты
 				.badge{
 					position: absolute;
 					text-decoration: line-through solid white;
 					transition: top 0.3s, bottom 0.3s;
 					max-width: 16%;
+					// размер большого значка
+					&.badge_large{
+						max-width: 32%;
+						@media screen and (min-width: 479px) {
+						  max-width: 25%;
+						}
+					}
 					img{
 						width: 100%;
 					}
@@ -174,23 +190,18 @@
 						padding: 4px 10px;
 					}
 				}
+				// баннер
 				.banner{
-					//margin-top: 150px;
 					vertical-align: middle;
 					display: flex;
 					flex-direction: row;
 					justify-content: center;
 					align-items: center;
-					//margin-left: 16px;
-					//margin-right: 16px;
 					height: 100%;
 					transition: background-color 0.05s;
-					h6{
-						line-height: 20px;
-						color: #ffffff;
-					}
 					img{
 						vertical-align: bottom;
+						min-height: 1px;
 					}
 					// горизонтальный узкий баннер
 					&.narrow{
@@ -304,4 +315,9 @@
 		padding-top: 48px;
     	padding-bottom: 24px;
 	}
+}
+
+// css hack for IE11 flex
+_:-ms-fullscreen, :root .app .main .badge_form .demo .demo_block_wrap div.demo_block_bottom {
+  flex-basis: auto !important;
 }

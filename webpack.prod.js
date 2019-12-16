@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const autoprefixer = require("autoprefixer");
 //const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -25,7 +26,18 @@ module.exports = {
         test: /\.less$/,
         use: [ 
             'style-loader',
-            'css-loader', 
+            'css-loader',
+            {
+                loader: 'postcss-loader',
+                options: {
+                    plugins: [
+                        autoprefixer(/*{
+                            browsers:['ie >= 8', 'last 4 version']
+                        }*/)
+                    ],
+                    sourceMap: true
+                }
+            }, 
             'less-loader'
         ],
       },

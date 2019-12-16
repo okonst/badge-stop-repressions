@@ -150,9 +150,7 @@ class BadgeForm extends Component{
                         {(this.state.type == "banner" && this.state.sizeBanner == "vertical") &&
                         <div className={"banner " + this.state.sizeBanner} style={{...position}}>
                           <img src={bannerLogo} className="banner_logo"/>
-                          <Typography variant="h6">
-                             <img src={bannerTxt} className="banner_txt"/>
-                          </Typography>
+                          <img src={bannerTxt} className="banner_txt"/>
                         </div>  }
                       </Box></Grid>
                     </Grid>
@@ -161,16 +159,14 @@ class BadgeForm extends Component{
                       {(this.state.type == "banner" && this.state.sizeBanner != "vertical") &&
                       <div className={"banner " + this.state.sizeBanner} style={{...position}}>
                         <img src={bannerLogo} className="banner_logo"/>
-                        <Typography variant="h6">
-                           <img src={bannerTxt} className="banner_txt"/>
-                        </Typography>
+                        <img src={bannerTxt} className="banner_txt"/>
                       </div>  }
                     </Box></Grid>
                   </Grid>
 
                   {/* Бейдж или лента */}
                   {(this.state.type == "badge" || this.state.type == "ribbon") &&
-                  <div className={"badge " + this.state.positionX} style={{...position}}>
+                  <div className={"badge " + ((this.state.type == "badge" && this.state.sizeBadge == "large") ? "badge_large " : "") + this.state.positionX} style={{...position}}>
                     {this.state.type == "badge" &&
                       <img src={badge} /> }
                     {this.state.type == "ribbon" &&
